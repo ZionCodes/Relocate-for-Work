@@ -1,0 +1,49 @@
+<script>
+	import Form from '../lib/Form.svelte';
+  import Hero from '../lib/Hero.svelte'
+  export let data;
+
+</script>
+
+<Hero />
+<div>
+  <ul>
+      {#each data?.records as record}
+      <a href="{record.url}">
+        <li>
+          <div class="relative flex flex-col items-center overflow-hidden bg-gray-50 p-6 sm:py-1">
+            <div class="bg-white shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center justify-between px-5 py-4 rounded-md">
+              <div class="flex items-center">
+                <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden">
+                  <img alt="Company Logo" height="64" src='http://127.0.0.1:8090/api/files/jobs/{record.id}/{record.picture}' width="64"
+                  style="aspect-ratio: 64 / 64; object-fit: cover;">
+                </div>
+                <div class="ml-4">
+                  <span class="text-purple-800 text-sm">{record.companyname}</span>
+                  <h3 class="font-bold mt-px">{record.title}</h3>
+                  <div class="flex items-center gap-3 mt-2">
+                    <div class="inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-purple-700 bg-purple-100">
+                      {record.tag}
+                    </div>
+                    <span class="text-slate-600 text-sm flex gap-1 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-slate-600">
+                        <line x1="2" x2="5" y1="12" y2="12"></line>
+                        <line x1="19" x2="22" y1="12" y2="12"></line>
+                        <line x1="12" x2="12" y1="2" y2="5"></line>
+                        <line x1="12" x2="12" y1="19" y2="22"></line>
+                        <circle cx="12" cy="12" r="7"></circle>
+                      </svg>
+                      {record.city}, {record.country}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <span class="text-gray-500 text-sm">Posted on August 24, 2023</span>
+            </div>
+          </div>
+        </li>
+      </a>
+      
+      {/each}
+  </ul>
+</div>
