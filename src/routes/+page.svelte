@@ -1,5 +1,4 @@
 <script>
-	import Form from '../lib/Form.svelte';
   import Hero from '../lib/Hero.svelte'
   export let data;
 
