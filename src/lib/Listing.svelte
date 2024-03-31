@@ -1,6 +1,22 @@
+<ul role="list" class="divide-y divide-gray-100 bg-gray-50p
+ px-1">
+  <li class="flex justify-around gap-x-6 py-5 bg-white flex-wrap items-center">
+    <div class="flex min-w-0 gap-x-4 items-center max-w-96 ">
+      <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      <div class="min-w-0 flex-auto">
+        <span class="text-purple-800 text-sm">Picnic</span>
+        <h3 class="text-sm leading-6 text-gray-900 font-bold mt-px">Senior Frontend Developer (React)</h3>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">Munich, Germany</p>
+        <div class="inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-purple-700 bg-purple-100">
+          Visa Sponsorship
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-end text-sm leading-6 text-gray-900 sm:flex-col-reverse">
+      <span class="mt-1 text-gray-500 text-sm flex">Posted on August 24, 2023</span>
+      <!-- <span class="mt-1 text-gray-500 text-sm flex">Promoted</span> -->
+    </div>
+  </li>
+</ul>
 
-<div class="relative flex min-h-screen flex-col items-center overflow-hidden bg-gray-50 p-6 sm:py-12"><div class="bg-white shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center justify-between px-5 py-4 rounded-md"><div class="flex items-center"><div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden"><img alt="Company Logo" height="64" src="/placeholder.svg" width="64" style="aspect-ratio: 64 / 64; object-fit: cover;"></div><div class="ml-4"><span class="text-purple-800 text-sm">Engineering</span><h3 class="font-bold mt-px">Senior Full Stack Backend Engineer</h3><div class="flex items-center gap-3 mt-2"><div class="inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-purple-700 bg-purple-100">
-    Full-time
-  </div><span class="text-slate-600 text-sm flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-slate-600"><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><circle cx="12" cy="12" r="7"></circle></svg>
-    Remote, UK
-  </span></div></div></div><span class="text-gray-500 text-sm">Posted on August 24, 2023</span></div></div>
+
