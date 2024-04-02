@@ -1,6 +1,8 @@
 import PocketBase from 'pocketbase';
 import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
 
+  
+
 
 
 export const actions={
@@ -13,13 +15,24 @@ export const actions={
 
         const title = form.get('title')?? '';
         const tag = form.get('tag')??'';
-        const description = form.get('description')??'';
+        const picture = form.get('logo')??'';
+        const company_name = form.get('company-name')??'';
+        const city = form.get('city')??'';
+        const country = form.get('country')??'';
+        const url = form.get('url')??'';
+        const email = form.get('email')??'';
+        
 
 
         const data = {
             title,
             tag,
-            description
+            picture,
+            company_name,
+            city,
+            country,
+            url,
+            email
         };
 
         

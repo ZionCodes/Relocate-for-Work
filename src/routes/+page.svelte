@@ -1,16 +1,19 @@
 <script>
+  import Email from '../lib/Email.svelte';
   import Hero from '../lib/Hero.svelte'
   export let data;
 
 </script>
 
 <Hero />
+<Email />
 <div>
   
   <ul >
       {#each data?.records as record}
-      <a href="{record.url}">
-        <li class="flex px-3 justify-between max-w-screen-md gap-x-6 py-5 border border-gray-200 mb-3 rounded-lg flex-wrap items-center mx-auto">
+      
+      <a href={`/jobs/${encodeURIComponent(record.title.replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.companyname.replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.city.replace(/\s+/g, '-').replace(/[()]/g, ''))}`}>
+        <li class="flex px-3 justify-between max-w-screen-md gap-x-6 py-5 border border-gray-200 mb-3 rounded-lg flex-wrap items-center mx-auto hover:bg-gray-100 transition-colors duration-200">
           <div class="flex min-w-0 flex-1 gap-x-4 items-center">
             <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src='http://127.0.0.1:8090/api/files/jobs/{record.id}/{record.picture}' alt="">
             <div class="min-w-0 flex-auto">
@@ -23,7 +26,7 @@
             </div>
           </div>
           <div class="flex flex-col items-end text-sm leading-6 text-gray-900 sm:flex-col-reverse">
-            <span class="mt-1 text-gray-500 text-sm flex">Aug 24</span>
+            <span class="text-gray-500 text-sm flex">{record.created}</span>
             <!-- <span class="mt-1 text-gray-500 text-sm flex">Promoted</span> -->
           </div>
         </li>
