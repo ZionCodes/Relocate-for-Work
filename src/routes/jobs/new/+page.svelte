@@ -1,12 +1,20 @@
 <script>
-    import { onMount } from 'svelte';
     import {Editor} from '@tadashi/svelte-editor-quill'
+    import { onMount } from 'svelte';
   
     const options = {
       theme: 'snow',
       placeholder: 'Job Description',
       plainclipboard: true,
     }
+
+    export let data;
+    const {result} = data;
+    onMount(()=> {
+        const output = result.data.authorization_url
+        window.location = output
+    })
+    
   
     // function onTextChange(event) {
     //   console.log(event.detail)
@@ -21,7 +29,7 @@
 
     function onTextChange(event) {
         htmlContent = event.detail.html;
-        console.log(htmlContent)
+        // console.log(htmlContent)
     }
 
     function handleSubmit(event) {
@@ -63,6 +71,8 @@
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
 </svelte:head>
+
+
   
 
     
