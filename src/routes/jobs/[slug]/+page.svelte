@@ -1,11 +1,17 @@
 <script>
-	export let data;
+  export let data;
 </script>
 
-<div class="job-details" if:job> <h2>{job.title} - {job.companyname}</h2>
-    <img src={job.picture} alt="{job.title}" class="job-image"> <p>{job.description}</p>
-    <div class="job-info">
-      <p><strong>Location:</strong> {job.city}, {job.country}</p>
-      <p><strong>Tag:</strong> {job.tag}</p>
-      </div>
-  </div>
+
+    <h1>{data.records.title}</h1>
+    <h1>{data.records.tag}</h1>
+    <h1>{data.records.company_name}</h1>
+    <img src='http://127.0.0.1:8090/api/files/jobs/{data.records.id}/{data.records.picture}' alt='{data.records.company_name} Logo'>
+    <div>{@html data.records.description}</div>
+    <!-- Render other job details here -->
+  
+
+
+<style>
+  /* Add your styles here */
+</style>

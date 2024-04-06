@@ -36,22 +36,41 @@
     event.preventDefault();
     const form = event.target;
 
-    const formData = new FormData(form);
-    formData.append('description', htmlContent); // Use 'description' instead of 'htmlContent'
+    // Payment initialization
+    let handler = PaystackPop.setup({
+        key: 'pk_live_939894ca098c0b6828462a23bf965d0b53510423', // Replace with your public key
+        email: form.email.value,
+        amount: 9900, // Amount in kobo (N99.00)
+        ref: 'JOB_' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
+        onClose: function(){
+            alert('Payment window closed.');
+        },
+        callback: function(response){
+            // Form submission after successful payment
+            const formData = new FormData(form);
+            formData.append('description', htmlContent); // Use 'description' instead of 'htmlContent'
 
-    fetch(form.action, {
-        method: form.method,
-        body: formData
-    }).then(response => {
-        if (response.ok) {
-            console.log('Form submitted successfully');
-        } else {
-            console.error('Form submission failed');
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Form submitted successfully');
+                    // Redirect to homepage after successful submission
+                    window.location.href = '/';
+                } else {
+                    console.error('Form submission failed');
+                }
+            }).catch(error => {
+                console.error('Error submitting form:', error);
+            });
         }
-    }).catch(error => {
-        console.error('Error submitting form:', error);
     });
-    }
+
+    // Open the Paystack payment popup
+    handler.openIframe();
+}
+
 
 
 
@@ -70,6 +89,8 @@
 <svelte:head>
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
 </svelte:head>
 
 
