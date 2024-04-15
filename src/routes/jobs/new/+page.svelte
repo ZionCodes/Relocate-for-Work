@@ -38,7 +38,7 @@
 
     // Payment initialization
     let handler = PaystackPop.setup({
-        key: 'pk_live_939894ca098c0b6828462a23bf965d0b53510423', // Replace with your public key
+        key: 'pk_test_a5132ec4760421f25c539cfd4d4caba6c7abdf4a', // Replace with your public key
         email: form.email.value,
         amount: 9900, // Amount in kobo (N99.00)
         ref: 'JOB_' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
@@ -116,6 +116,7 @@
                                 <option selected="">Select Job Type</option>
                                 <option value="Visa Sponsorship">Visa Sponsorship</option>
                                 <option value="Relocation Support">Relocation Support</option>
+                                <option value="Visa Sponsorship & Relocation Support">Visa Sponsorship & Relocation Support</option>
                             </select>
                         </div>
                         <div class="w-full">

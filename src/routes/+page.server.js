@@ -11,7 +11,7 @@ export async function load(){
 
     const results = records.map((record) => {
         const createdDate = new Date(record.created);
-        const formattedDate = createdDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+        const formattedDate = createdDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
         return {
             title: record.title,
             tag: record.tag,
@@ -34,3 +34,34 @@ export async function load(){
     }
 }
 
+
+
+
+
+
+export const actions={
+    createmail: async ({request})=>{
+        const pb = new PocketBase("http://127.0.0.1:8090");
+        //sign in
+         await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
+         
+        const form = await request.formData();
+
+        const email = form.get('email')?? '';     
+
+
+        const data = {
+            email,
+           
+        };
+
+        
+        
+        await pb.collection('emails').create(data);
+
+
+    }
+}
+
+
+  

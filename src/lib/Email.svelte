@@ -4,10 +4,10 @@
     <div class="py-4 px-4 mx-auto max-w-screen-lg lg:py-8 lg:px-6 flex flex-wrap">
         <div class="w-full md:w-1/2 px-4 mb-0 md:mb-0">
             <!-- <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white">Sign up for our newsletter</h2> -->
-            <p class="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+            <p class="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">Stay up to date with the latest Jobs delivered straight to your email.</p>
         </div>
         <div class="w-full md:w-1/2 px-4">
-            <form>
+            <form method="post" action="?/createmail">
                 <div class="items-center mx-auto mb-0 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
                     <div class="relative w-full">
                         <label for="email" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
