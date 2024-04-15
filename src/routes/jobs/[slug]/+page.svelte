@@ -16,12 +16,12 @@
 -->
 
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
-  <div class="flex items-center gap-4 border border-blue-400">
+  <div class="flex items-center gap-4 p-2">
     <img src='http://127.0.0.1:8090/api/files/jobs/{data.records.id}/{data.records.picture}' alt='{data.records.company_name} Logo'
       class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center mr-4 object-cover transition-all duration-500 delay-500 transform"
     />
   </div>
-  <div class="min-w-0 flex-1 border border-red-400">
+  <div class="min-w-0 flex-1">
     <h2 class="text-2xl font-bold text-gray-900 sm:truncate">Back End Developer</h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-wrap">
       <div class="flex items-center font-medium text-primary-600 dark:text-primary-500">
