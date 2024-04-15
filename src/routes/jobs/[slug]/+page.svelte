@@ -22,7 +22,7 @@
     />
   </div>
   <div class="min-w-0 flex-1">
-    <h2 class="text-2xl font-bold text-gray-900 sm:truncate">Back End Developer</h2>
+    <h2 class="text-2xl font-bold text-gray-900 sm:truncate">{data.records.title}</h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-wrap">
       <div class="flex items-center font-medium text-primary-600 dark:text-primary-500">
         {data.records.company_name}
