@@ -28,3 +28,5 @@
     </script>
   </svelte:head>
   
+
+  <!-- Google tag (gtag.js) -->
