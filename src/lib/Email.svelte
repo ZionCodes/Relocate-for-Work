@@ -62,10 +62,13 @@
           showAlert = false;
         }, 3000);
       } catch (error) {
-        console.error(error);
-        alertMessage = 'Failed to submit email';
-        showAlert = true;
-      }
+      console.error(error);
+      alertMessage = 'Failed to submit email';
+      showAlert = true;
+      setTimeout(() => {
+      showAlert = false;
+      }, 3000);
+}
     };
   </script>
   {#if showAlert}
