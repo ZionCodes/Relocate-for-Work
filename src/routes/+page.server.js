@@ -46,24 +46,25 @@ export const actions={
          await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
          
         const form = await request.formData();
-
-        const email = form.get('email')?? '';     
-
-
+        const emailInput = form.get('email');
+        const email = emailInput ?? '';  
+  
+  
         const data = {
             email,
            
         };
-
+  
         
         
         await pb.collection('emails').create(data);
-
+        emailInput.value = '';
+  
         return { message: 'Email submitted successfully!' };
-
-
+  
+  
     }
-}
+  }
 
 
   
