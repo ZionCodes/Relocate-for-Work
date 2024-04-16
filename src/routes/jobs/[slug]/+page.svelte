@@ -5,10 +5,13 @@
   
 </script>
 
-<SvelteSeo
-  title='{data.records.title} - {data.records.company_name}'
-  description='{data.records.description.substring(0, 160)}'
-/>
+<svelte:head>
+  <SvelteSeo
+    title='{data.records.title} - {data.records.company_name}'
+    description='{data.records.description.substring(0, 160)}'
+  />
+</svelte:head>
+
 
 
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
