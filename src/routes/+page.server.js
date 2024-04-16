@@ -41,7 +41,7 @@ export async function load(){
 
 export const actions={
     createmail: async ({request})=>{
-        const pb = new PocketBase("https://connected-animal.pockethost.io/");
+        const pb = new PocketBase("http://127.0.0.1:8090/");
         //sign in
          await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
          
@@ -58,6 +58,8 @@ export const actions={
         
         
         await pb.collection('emails').create(data);
+
+        return { message: 'Email submitted successfully!' };
 
 
     }
