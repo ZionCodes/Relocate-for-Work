@@ -40,6 +40,8 @@ export const actions={
       
       await pb.collection('emails').create(data);
 
+      return { message: 'Email submitted successfully!' };
+
 
   }
 }

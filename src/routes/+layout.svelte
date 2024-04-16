@@ -6,8 +6,6 @@
 </script>
 
 <Navbar />
-
-<Email />
 <slot></slot>
 <Footer />
 
