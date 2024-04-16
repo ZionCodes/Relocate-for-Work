@@ -1,24 +1,20 @@
 <script>
 	import Email from "../../../lib/Email.svelte";
-
+  import SvelteSeo from "svelte-seo";
   export let data;
+  
 </script>
 
-    <!-- <div class="py-4 px-4 mx-auto max-w-screen-lg lg:py-8 lg:px-6 flex flex-wrap">
-      <h1>{data.records.title}</h1>
-    <h1>{data.records.tag}</h1>
-    <h1>{data.records.company_name}</h1>
-    <img src='http://127.0.0.1:8090/api/files/jobs/{data.records.id}/{data.records.picture}' alt='{data.records.company_name} Logo'>
-    <div>{@html data.records.description}</div>
-    </div> -->
+<SvelteSeo
+  title='{data.records.title} - {data.records.company_name}'
+  description='{data.records.description.substring(0, 160)}'
+/>
 
-    <!--
--->
 
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
   <div class="flex items-center gap-4 p-2">
     <img src='https://connected-animal.pockethost.io/api/files/jobs/{data.records.id}/{data.records.picture}' alt='{data.records.company_name} Logo'
-      class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center mr-4 object-container w-full h-full transition-all duration-500 delay-500 transform"
+      class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center mr-4 object-cover w-full h-full transition-all duration-500 delay-500 transform"
     />
   </div>
   <div class="min-w-0 flex-1">
