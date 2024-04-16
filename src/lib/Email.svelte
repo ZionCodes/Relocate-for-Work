@@ -35,41 +35,41 @@
 
 <script>
     const createEmail = async (email) => {
-  const response = await fetch('?/createmail', {
-    method: 'POST',
-    body: new URLSearchParams({ email }),
-  });
-
-  if (response.ok) {
-    const result = await response.json();
-    return result.message || 'Email submitted successfully!';
-  } else {
-    throw new Error('Failed to submit email');
-  }
-};
-
-let showAlert = false;
-let alertMessage = '';
-
-const handleSubmit = async (event) => {
-  event.preventDefault();
-
-  try {
-    alertMessage = await createEmail(event.target.email.value);
-    showAlert = true;
-    setTimeout(() => {
+      const response = await fetch('?/createmail', {
+        method: 'POST',
+        body: new URLSearchParams({ email }),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        const data = JSON.parse(result.data)[1]; // Parse the data field as JSON and access the first element
+        return data.message || 'Email submitted successfully!';
+      } else {
+        throw new Error('Failed to submit email');
+      }
+    };
+  
+    let showAlert = false;
+    let alertMessage = '';
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        alertMessage = await createEmail(event.target.email.value);
+        showAlert = true;
+        setTimeout(() => {
+          showAlert = false;
+        }, 3000);
+      } catch (error) {
+      console.error(error);
+      alertMessage = 'Failed to submit email';
+      showAlert = true;
+      setTimeout(() => {
       showAlert = false;
-    }, 3000);
-  } catch (error) {
-    console.error(error);
-    alertMessage = 'Failed to submit email';
-    showAlert = true;
-    setTimeout(() => {
-      showAlert = false;
-    }, 3000);
-  }
-};
-
+      }, 3000);
+}
+    };
   </script>
   {#if showAlert}
   <div class="fixed top-0 left-0 right-0 p-4 text-center text-sm text-green-800 bg-green-300 dark:bg-gray-800 dark:text-green-400 z-50" role="alert">
