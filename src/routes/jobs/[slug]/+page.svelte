@@ -9,7 +9,7 @@
 <svelte:head>
   <SvelteSeo
     title='{data.records.title} - {data.records.company_name} - {data.records.city},{data.records.country}'
-    description='{data.records.description.substring(0, 160)}'
+    description='{data.records.description.substring(0, 160).replace(/<[^>]*>/g, "")}'
   />
 </svelte:head>
 
