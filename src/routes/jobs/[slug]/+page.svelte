@@ -2,13 +2,14 @@
 	import Email from "../../../lib/Email.svelte";
   import SvelteSeo from "svelte-seo";
   export let data;
+
   
 </script>
 
 <svelte:head>
   <SvelteSeo
     title='{data.records.title} - {data.records.company_name} - {data.records.city},{data.records.country}'
-    description='{data.records.description.substring(0, 160).innerHTML}'
+    description='{data.records.description.substring(0, 160).replace(/<[^>]*>/g, "")}'
   />
 </svelte:head>
 
