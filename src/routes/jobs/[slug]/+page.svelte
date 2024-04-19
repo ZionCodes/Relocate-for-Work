@@ -7,7 +7,7 @@
 
 <svelte:head>
   <SvelteSeo
-    title='{data.records.title} - {data.records.company_name}'
+    title='{data.records.title} - {data.records.company_name} - {data.records.city},{data.records.country}'
     description='{data.records.description.substring(0, 160)}'
   />
 </svelte:head>
@@ -17,7 +17,7 @@
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
   <div class="flex items-center gap-4 p-2">
     <img src='https://connected-animal.pockethost.io/api/files/jobs/{data.records.id}/{data.records.picture}' alt='{data.records.company_name} Logo'
-      class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center mr-4 object-cover w-full h-full transition-all duration-500 delay-500 transform"
+      class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center mr-4 object-cover transition-all duration-500 delay-500 transform"
     />
   </div>
   <div class="min-w-0 flex-1">
