@@ -1,9 +1,15 @@
 <script>
+  import SvelteSeo from "svelte-seo";
   import Email from '../lib/Email.svelte';
   import Hero from '../lib/Hero.svelte'
   export let data;
 
 </script>
+
+<SvelteSeo
+  title="Find Visa Sponsorship and Relocation Support Jobs"
+  description="Land your dream job and move abroad! Relocate for Work connects you with visa-sponsored and relocation support jobs."
+/>
 
 <Hero />
 <Email />
