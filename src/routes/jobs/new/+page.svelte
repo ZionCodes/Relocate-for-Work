@@ -1,6 +1,7 @@
 <script>
     import {Editor} from '@tadashi/svelte-editor-quill'
     import { onMount } from 'svelte';
+    import SvelteSeo from "svelte-seo";
   
     const options = {
       theme: 'snow',
@@ -90,6 +91,11 @@
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
     <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <SvelteSeo
+    title='Post Visa Sponsorship & Relocation Jobs | Find Top Talent - Relocate for Work'
+    description='Fill Visa Sponsorship & Relocation Support Roles Faster. Reach Top Talent Seeking Relocation Assistance on Relocate for Work'
+  />
 
 </svelte:head>
 
