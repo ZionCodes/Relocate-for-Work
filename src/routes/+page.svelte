@@ -7,8 +7,8 @@
 </script>
 
 <SvelteSeo
-  title="Find Visa Sponsorship and Relocation Support Jobs"
-  description="Land your dream job and move abroad! Relocate for Work connects you with visa-sponsored and relocation support jobs."
+  title="Find Visa Sponsorship and Relocation Assistance Jobs"
+  description="Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation assistance jobs."
 />
 
 <Hero />

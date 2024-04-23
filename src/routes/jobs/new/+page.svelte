@@ -11,26 +11,17 @@
 
     export let data;
     const {result} = data;
-    onMount(()=> {
-        const output = result.data.authorization_url
-        window.location = output
-    })
-    
-  
-    // function onTextChange(event) {
-    //   console.log(event.detail)
-    // }
-
-    // function onTextChange(event) {
-    //     const htmlContent = event.detail.html; // Get HTML from event detail
-    //     console.log(htmlContent)
-    // }
+    onMount(() => {
+    if (result && result.data && result.data.authorization_url) {
+        const output = result.data.authorization_url;
+        window.location = output;
+    }
+    });
 
     let htmlContent;
 
     function onTextChange(event) {
         htmlContent = event.detail.html;
-        // console.log(htmlContent)
     }
 
     function handleSubmit(event) {
@@ -93,7 +84,7 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
     <SvelteSeo
-    title='Post Visa Sponsorship & Relocation Jobs | Find Top Talent - Relocate for Work'
+    title='Post Jobs | Find Top Talent - Relocate for Work'
     description='Fill Visa Sponsorship & Relocation Support Roles Faster. Reach Top Talent Seeking Relocation Assistance on Relocate for Work'
   />
 
@@ -142,7 +133,7 @@
                         <div class="sm:col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                             <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                                <Editor {options} on:text-change={onTextChange} data='Apenas um show' />
+                                <Editor {options} on:text-change={onTextChange} data='' />
                             </div>
                         </div>
                         <div>

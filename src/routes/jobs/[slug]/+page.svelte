@@ -8,7 +8,7 @@
 
 <svelte:head>
   <SvelteSeo
-    title='{data.records.title} - {data.records.company_name} - {data.records.city},{data.records.country}'
+    title='{data.records.title} - {data.records.company_name} - {data.records.city}, {data.records.country}'
     description='{data.records.description.substring(0, 160).replace(/<[^>]*>/g, "")}'
   />
 </svelte:head>
@@ -57,9 +57,12 @@
   </div>
   <div class="mt-5 flex lg:ml-4 lg:mt-0">
     <span class="sm:ml-3">
-      <button type="button" class="inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-        Apply now
-      </button>
+      <a href={data.records.url}>
+        <button type="button" class="inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          Apply now
+        </button>
+      </a>
+      
     </span>
   </div>
   
