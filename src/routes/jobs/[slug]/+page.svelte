@@ -67,12 +67,19 @@
   </div>
   
 </div>
-<!-- <div class="parent-container d-flex justify-content-center max-w-2xl">
-  <p class="border border-red-500 mb-3 text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:me-3 first-letter:float-start">{@html data.records.description}</p>
-</div> -->
 
 <div class="parent-container p-2 max-w-4xl items-center mx-auto">
   <p class="mb-3 text-gray-500 dark:text-gray-400">{@html data.records.description}</p>
+</div>
+<div class="mt-5 flex lg:ml-4 lg:mt-0">
+  <span class="sm:ml-3">
+    <a href={data.records.url}>
+      <button type="button" class="inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+        Apply now
+      </button>
+    </a>
+    
+  </span>
 </div>
 
 
