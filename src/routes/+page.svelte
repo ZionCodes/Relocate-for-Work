@@ -18,7 +18,7 @@
     <li>
       <a href={`/jobs/${encodeURIComponent(record.title.replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.companyname.replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.city.replace(/\s+/g, '-').replace(/[()]/g, ''))}-${record.id}`} class="flex px-3 justify-between max-w-screen-md gap-x-6 py-5 border border-gray-200 mb-3 rounded-lg flex-wrap items-center mx-auto hover:bg-gray-100 transition-colors duration-200">
         <div class="flex min-w-0 flex-1 gap-x-4 items-center">
-          <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src='https://connected-animal.pockethost.io/api/files/jobs/{record.id}/{record.picture}' alt="">
+          <img class="h-16 w-16 flex-none rounded-full bg-gray-50 object-cover" src='https://connected-animal.pockethost.io/api/files/jobs/{record.id}/{record.picture}' alt="">
           <div class="min-w-0 flex-auto">
             <span class="text-primary-600 dark:text-primary-500 text-sm ">{record.companyname}</span>
             <p class="md:text-sm leading-6 text-gray-900 font-bold mt-px max-w-xs">{record.title}</p>
