@@ -17,8 +17,7 @@
 
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
   <div class="flex items-center gap-4 p-2">
-    <img src={`https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`} alt={`${data.records.company_name} Logo`} class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-cover mr-4 transition-all duration-500 delay-500 transform"
-/>
+    <img src={`https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`} alt={`${data.records.company_name} Logo`} class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-cover mr-4 transition-all duration-500 delay-500 transform"/>
   </div>
   <div class="min-w-0 flex-1">
     <h2 class="text-2xl font-bold text-gray-900 sm:truncate">{data.records.title}</h2>
@@ -53,7 +52,7 @@
         {data.records.created}
       </div>
     </div>
-    <div class="mt-5 flex lg:ml-4 lg:mt-0">
+    <div class="mt-5 flex lg:ml-auto lg:mt-0">
       <span class="sm:ml-3">
         <a href={data.records.url}>
           <button type="button" class="inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
@@ -64,6 +63,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="parent-container p-2 max-w-4xl items-center mx-auto">
   <p class="mb-3 text-gray-500 dark:text-gray-400">{@html data.records.description}</p>
