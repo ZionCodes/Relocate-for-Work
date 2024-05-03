@@ -51,17 +51,18 @@
         </svg>
         {data.records.created}
       </div>
+      <div class="mt-5 flex justify-end items-center lg:ml-4 lg:mt-0 border border-red-700">
+        <span class="sm:ml-3 flex-col items-center">
+          <a href={data.records.url}>
+            <button type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              Apply now
+            </button>
+          </a>
+        </span>
+      </div> 
       
     </div>
-    <div class="mt-5 flex justify-end items-center lg:ml-4 lg:mt-0 border border-red-700">
-      <span class="sm:ml-3 flex-col items-center">
-        <a href={data.records.url}>
-          <button type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-            Apply now
-          </button>
-        </a>
-      </span>
-    </div> 
+    
        
   </div>
 </div>
