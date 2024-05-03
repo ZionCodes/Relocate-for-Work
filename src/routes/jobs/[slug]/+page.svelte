@@ -15,7 +15,7 @@
 
 
 
-<div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
+<div class="lg:flex lg:items-center lg:justify-between justify-between mx-auto max-w-5xl p-2">
   <div class="flex items-center gap-4 p-2">
     <img src={`https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`} alt={`${data.records.company_name} Logo`} class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-cover mr-4 transition-all duration-500 delay-500 transform"/>
   </div>
