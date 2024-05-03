@@ -16,10 +16,10 @@
 
 
 <div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl border border-blue-500 p-2">
-  <div class="flex items-center gap-4 p-2">
+  <div class="flex items-center gap-4 p-2 purple">
     <img src={`https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`} alt={`${data.records.company_name} Logo`} class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-cover mr-4 transition-all duration-500 delay-500 transform"/>
   </div>
-  <div class="min-w-0 flex-1">
+  <div class="min-w-0 flex-1 border border-green-700">
     <h2 class="text-2xl font-bold text-gray-900 sm:truncate">{data.records.title}</h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-wrap">
       <div class="flex items-center font-medium text-primary-600 dark:text-primary-500">
@@ -53,7 +53,7 @@
       </div>
       
     </div>
-    <div class="mt-5 flex justify-end items-center lg:ml-4 lg:mt-0 border border-red-700 inline-block">
+    <div class="mt-5 flex justify-end items-center lg:ml-4 lg:mt-0 border border-red-700">
       <span class="sm:ml-3 flex-col items-center">
         <a href={data.records.url}>
           <button type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
