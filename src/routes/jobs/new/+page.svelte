@@ -30,10 +30,10 @@
 
     // Payment initialization
     let handler = PaystackPop.setup({
-        key: 'pk_test_a5132ec4760421f25c539cfd4d4caba6c7abdf4a', // Replace with your public key
+        key: 'pk_live_6f9370c9992106efc72792c6a58496a8ff236e37', // Replace with your public key
         email: form.email.value,
         amount: 9900, // Amount in kobo (N99.00)
-        ref: 'JOB_' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
+        ref: 'Relocate for Work' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
         onClose: function(){
             alert('Payment window closed.');
         },

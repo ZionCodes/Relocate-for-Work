@@ -51,8 +51,6 @@
         </svg>
         {data.records.created}
       </div>
-      
-      
     </div>
     
        
