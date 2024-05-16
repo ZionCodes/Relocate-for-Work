@@ -33,7 +33,7 @@
         key: 'pk_live_6f9370c9992106efc72792c6a58496a8ff236e37', // Replace with your public key
         email: form.email.value,
         amount: 9900, // Amount in kobo (N99.00)
-        ref: 'Relocate for Work' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
+        ref: 'Relocate_for_Work' + Math.floor((Math.random() * 1000000000) + 1), // Unique reference for the transaction
         onClose: function(){
             alert('Payment window closed.');
         },
