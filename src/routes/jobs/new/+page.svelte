@@ -34,7 +34,7 @@
         email: form.email.value,
         amount: 9900, // Amount in kobo (N99.00)
         ref: 'Relocate_for_Work' + Math.floor((Math.random() * 1000) + 1), // Unique reference for the transaction
-        payment_method: 'card',
+        channels: ['card'], // Restrict to card payments
         onClose: function(){
             alert('Payment window closed.');
         },
