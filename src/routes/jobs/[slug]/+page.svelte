@@ -20,11 +20,11 @@
 
 
 
-<div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl border border-blue-500 p-2">
+<div class="lg:flex lg:items-center lg:justify-between mx-auto max-w-5xl p-2">
   <div class="flex items-center gap-4 p-2 purple">
     <img src={`https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`} alt={`${data.records.company_name} Logo`} class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-cover mr-4 transition-all duration-500 delay-500 transform"/>
   </div>
-  <div class="min-w-0 flex-1 border border-green-700">
+  <div class="min-w-0 flex-1">
     <h2 class="text-2xl font-bold text-gray-900 sm:truncate">{data.records.title}</h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-wrap">
       <div class="flex items-center font-medium text-primary-600 dark:text-primary-500">
@@ -51,16 +51,23 @@
         $120k &ndash; $140k
       </div> -->
       <div class="mt-2 flex items-center text-sm text-gray-500">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.583 8.445h.01M10.86 19.71l-6.573-6.63a.993.993 0 0 1 0-1.4l7.329-7.394A.98.98 0 0 1 12.31 4l5.734.007A1.968 1.968 0 0 1 20 5.983v5.5a.992.992 0 0 1-.316.727l-7.44 7.5a.974.974 0 0 1-1.384.001Z"/>
+        </svg>        
+        {data.records.tag}
+      </div>
+      <div class="mt-2 flex items-center text-sm text-gray-500">
         <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
         </svg>
         {formatDate(data.records.created)}
       </div>
+      
     </div>
     
        
   </div>
-  <div class="mt-5 flex justify-start items-center lg:ml-4 lg:mt-0 border border-red-700">
+  <div class="mt-5 flex justify-start items-center lg:ml-4 lg:mt-0">
     <span class="sm:ml-3 flex-col items-center">
       <a href={data.records.url}>
         <button type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm bg-primary-700 border-primary-600 hover:bg-primary-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">

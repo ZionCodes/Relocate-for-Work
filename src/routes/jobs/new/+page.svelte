@@ -113,7 +113,7 @@
                                 <option selected="">Select Job Type</option>
                                 <option value="Visa Sponsorship">Visa Sponsorship</option>
                                 <option value="Relocation Support">Relocation Support</option>
-                                <option value="Visa Sponsorship & Relocation Support">Visa Sponsorship & Relocation Support</option>
+                                <option value="Visa & Relocation Support">Visa & Relocation Support</option>
                             </select>
                         </div>
                         <div class="w-full">
