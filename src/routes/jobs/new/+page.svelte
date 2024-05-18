@@ -1,22 +1,16 @@
 <script>
-    import {Editor} from '@tadashi/svelte-editor-quill'
+    import {Editor} from '@tadashi/svelte-editor-quill';
     import { onMount } from 'svelte';
     import SvelteSeo from "svelte-seo";
-  
-    const options = {
-      theme: 'snow',
-      placeholder: 'Job Description',
-      plainclipboard: true,
-    }
+    import { loadStripe } from '@stripe/stripe-js';
 
-    export let data;
-    const {result} = data;
-    onMount(() => {
-    if (result && result.data && result.data.authorization_url) {
-        const output = result.data.authorization_url;
-        window.location = output;
+    const stripePromise = loadStripe('pk_test_51LmM0IAbRbfbQ2Hfp2vGdkN1APZZqJ8h4AVpSxgJXvaT6P48UWI2gRN5Av9545Tjn0Vi1THX9t2zHBHt5dkrEnVq00fgquL53d'); // Replace with your public key
+
+    const options = {
+        theme: 'snow',
+        placeholder: 'Job Description',
+        plainclipboard: true,
     }
-    });
 
     let htmlContent;
 
@@ -24,59 +18,51 @@
         htmlContent = event.detail.html;
     }
 
-    function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
 
-    // Payment initialization
-    let handler = PaystackPop.setup({
-        key: 'pk_live_6f9370c9992106efc72792c6a58496a8ff236e37', // Replace with your public key
-        email: form.email.value,
-        amount: 9900, // Amount in kobo (N99.00)
-        ref: 'Relocate_for_Work' + Math.floor((Math.random() * 1000) + 1), // Unique reference for the transaction
-        channels: ['card'], // Restrict to card payments
-        onClose: function(){
-            alert('Payment window closed.');
-        },
-        callback: function(response){
-            // Form submission after successful payment
-            const formData = new FormData(form);
-            formData.append('description', htmlContent); // Use 'description' instead of 'htmlContent'
+        const stripe = await stripePromise;
+        const response = await fetch('/new/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: form.email.value,
+                amount: 9900, // Amount in cents ($99.00)
+                description: htmlContent,
+            }),
+        });
 
-            fetch(form.action, {
-                method: form.method,
-                body: formData
-            }).then(response => {
-                if (response.ok) {
-                    console.log('Form submitted successfully');
-                    // Redirect to homepage after successful submission
-                    window.location.href = '/';
-                } else {
-                    console.error('Form submission failed');
-                }
-            }).catch(error => {
-                console.error('Error submitting form:', error);
-            });
+        const session = await response.json();
+
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        });
+
+        if (result.error) {
+            console.error(result.error.message);
+        }
+    }
+
+    // Function to show the alert and redirect
+    function showAlert() {
+        const alertBox = document.getElementById('info-popup');
+        alertBox.classList.remove('hidden');
+        setTimeout(() => {
+            alertBox.classList.add('hidden');
+            window.location.href = '/';
+        }, 2000);
+    }
+
+    // Listen for successful payment events
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success')) {
+            showAlert();
         }
     });
-
-    // Open the Paystack payment popup
-    handler.openIframe();
-}
-
-
-
-
-
-    
-
-   
-    
-
-
-
-
-
 </script>
   
 <svelte:head>
