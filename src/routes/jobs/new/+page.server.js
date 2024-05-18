@@ -9,7 +9,7 @@ const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 export const actions={
     create: async ({request})=>{
-        const pb = new PocketBase("https://connected-animal.pockethost.io/");
+        const pb = new PocketBase("https://connected-animal.pockethost.io/")
         //sign in
          await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
          
