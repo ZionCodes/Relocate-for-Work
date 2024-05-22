@@ -3,12 +3,32 @@
   import Email from '../lib/Email.svelte';
   import Hero from '../lib/Hero.svelte'
   export let data;
+  import cover from '$lib/cover.jpg'
 
 </script>
 
 <SvelteSeo
   title="Find Visa Sponsorship and Relocation Assistance Jobs"
   description="Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation assistance jobs."
+  canonical="https://relocateforwork.com"
+  keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocate for work, relocate"
+  openGraph={{
+    title: "Find Visa Sponsorship and Relocation Assistance Jobs| RelocateForWork.com",
+    description:
+      "Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation assistance jobs.",
+    image: {cover},
+    url: "https://relocateforwork.com",
+    type: "website",
+    site_name: "Relocate for Work",
+  }}
+  twitter={{
+    card: "summary_large_image",
+    site: "@RelocateforWork",
+    title: "Find Visa Sponsorship and Relocation Assistance Jobs| RelocateForWork.com",
+    description:
+      "Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation assistance jobs.",
+    image: {cover},
+  }}
 />
 
 <Hero />
