@@ -15,7 +15,7 @@
     title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
     description:
       "Land your dream job and move abroad!",
-    image: "../lib/cover.jpg",
+    image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
     url: "https://relocateforwork.com",
     type: "website",
     site_name: "Relocate for Work",
@@ -26,7 +26,7 @@
     title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
     description:
       "Land your dream job and move abroad!",
-    image: "../lib/cover.jpg",
+    image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
   }}
 />
 
