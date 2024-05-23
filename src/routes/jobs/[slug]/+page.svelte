@@ -17,18 +17,16 @@
     description="{data.records.company_name} is hiring a {data.records.title} to join their team in {data.records.city}, {data.records.country}. If that's you, consider applying!"
     openGraph={{
       title: `${data.records.title} at ${data.records.company_name} in ${data.records.city}`,
-      description:
-        `${data.records.company_name} is hiring a ${data.records.title} to join their team in ${data.records.city}, ${data.records.country}. If that's you, consider applying!`,
+      description:`${data.records.company_name} is hiring a ${data.records.title} to join their team in ${data.records.city}, ${data.records.country}. If that's you, consider applying!`,
       image: `https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`,
-      type: "article",
-      site_name: "Relocate for Work Blog",
+      type: "website",
+      site_name: "Relocate for Work",
       }}
       twitter={{
       card: "summary",
       site: "@RelocateforWork",
       title: `${data.records.title} at ${data.records.company_name} in ${data.records.city}`,
-      description:
-      `${data.records.company_name} is hiring a ${data.records.title} to join their team in ${data.records.city}, ${data.records.country}. If that's you, consider applying!`,
+      description:`${data.records.company_name} is hiring a ${data.records.title} to join their team in ${data.records.city}, ${data.records.country}. If that's you, consider applying!`,
       image: `https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.picture}`,
       }}
   />
