@@ -1,6 +1,9 @@
 import PocketBase from 'pocketbase';
 import { SECRET_EMAIL, SECRET_PASSWORD } from '$env/static/private';
 
+
+export const prerender = true; 
+
 export async function load({ params }) {
   const id = extractIdFromSlug(params.slug);
   const pb = new PocketBase('https://connected-animal.pockethost.io/');

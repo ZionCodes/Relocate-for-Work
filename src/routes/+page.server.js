@@ -1,7 +1,6 @@
 import PocketBase from 'pocketbase';
 import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
 
-
 export async function load(){
     const pb = new PocketBase("https://connected-animal.pockethost.io/");
     await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);

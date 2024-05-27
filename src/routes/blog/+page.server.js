@@ -1,6 +1,7 @@
 import PocketBase from 'pocketbase';
 import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
 
+export const prerender = true;
 
 export async function load(){
     const pb = new PocketBase("http://127.0.0.1:8090/");

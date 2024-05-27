@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 import { SECRET_EMAIL, SECRET_PASSWORD } from '$env/static/private';
 
-
+export const prerender = true;
 
 export async function load({ params }) {
   const title = decodeURIComponent(params.slug.replace(/-/g, ' '));
