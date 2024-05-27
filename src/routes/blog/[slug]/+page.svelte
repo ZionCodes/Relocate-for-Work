@@ -1,5 +1,6 @@
 <script>
 import Email from "../../../lib/Email.svelte";
+export let data;
 </script>
 
 
@@ -28,7 +29,7 @@ import Email from "../../../lib/Email.svelte";
           <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
-          <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">What is Visa Sponsorship</span>
+          <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">{data.records.title}</span>
         </div>
       </li>
     </ol>
@@ -50,11 +51,8 @@ import Email from "../../../lib/Email.svelte";
                 </address>
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">Best practices for successful prototypes</h1>
             </header>
-            <p class="lead text-xl mt-5 mb-5">Flowbite is an open-source library of UI components built with the utility-first
-                classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                datepickers.</p>
-            <p class='mb-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed'>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
-                you can think things through before committing to an actual design project.</p>
+            <p class="lead text-xl mt-5 mb-5">{data.records.introduction}</p>
+            <p class='mb-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed'>{@html data.records.article}</p>
         </article>
     </div>
   </main>
