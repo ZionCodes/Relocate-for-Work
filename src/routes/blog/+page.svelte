@@ -3,8 +3,8 @@
     export let data;
 </script>
 
-<svelte:head>
-    <SvelteSeo
+
+  <SvelteSeo
     title='Relocate For Work | Blog'
     description='Insights and resources for securing visa sponsorship jobs and relocation support jobs, moving abroad and more.'
     keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocate for work, relocate, move abroad"
@@ -26,7 +26,6 @@
     image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
     }}
   />
-</svelte:head>
 
 
 <section class="bg-white dark:bg-gray-900">
