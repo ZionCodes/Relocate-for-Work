@@ -68,13 +68,12 @@
 <svelte:head>
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
+</svelte:head>
 
-    <SvelteSeo
+<SvelteSeo
     title='Post Jobs | Find Top Talent - Relocate for Work'
     description='Fill Visa Sponsorship & Relocation Support Roles Faster. Reach Top Talent Seeking Relocation Assistance on Relocate for Work'
-  />
-
-</svelte:head>
+/>
 
 
 <section class="bg-white dark:bg-gray-900">
