@@ -61,7 +61,7 @@ export let data;
             <header class="mb-4 lg:mb-6 not-format">
                 <address class="flex items-center mb-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                      <img class="mr-4 w-16 h-16 rounded-full" src={`http://127.0.0.1:8090/api/files/${data.records.author.collectionName}/${data.records.author.id}/${data.records.author.picture}`} alt={data.records.author.name}>
+                      <img class="mr-4 w-16 h-16 rounded-full" src={`https://connected-animal.pockethost.io/api/files/${data.records.author.collectionName}/${data.records.author.id}/${data.records.author.picture}`} alt={data.records.author.name}>
                         <div>
                             <a href="/" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{data.records.author.name}</a>
                             <p class="text-base text-gray-500 dark:text-gray-400">{data.records.author.title}</p>

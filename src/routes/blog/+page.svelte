@@ -42,7 +42,7 @@
                     <a href={`/blog/${encodeURIComponent(record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${record.id}`} class="block relative overflow-hidden w-full">
                         <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full min-h-[400px]">
                             <img
-                              src={`http://127.0.0.1:8090/api/files/posts/${record.id}/${record.thumbnail}`}
+                              src={`https://connected-animal.pockethost.io/api/files/posts/${record.id}/${record.thumbnail}`}
                               alt="Thumbnail"
                               class="w-full h-48 object-cover"
                             >
