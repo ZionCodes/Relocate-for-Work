@@ -1,8 +1,8 @@
 // /src/routes/sitemap.xml/+server.js
 import PocketBase from 'pocketbase';
 import * as sitemap from 'super-sitemap';
-import { SECRET_EMAIL, SECRET_PASSWORD } from '$env/static/private';
-import { error } from '@sveltejs/kit';
+import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
+
 
 const pb = new PocketBase("http://127.0.0.1:8090/");
 
@@ -29,26 +29,23 @@ export const GET = async () => {
       return `${encodeURIComponent(titleSlug)}-${record.id}`;
     });
   } catch (err) {
-    throw error(500, 'Could not load data for param values.');
+    throw err(500, 'Could not load data for param values.');
   }
 
-  console.log(jobSlugs);
-  console.log(blogSlugs);
-
-  return sitemap.response({
-    origin: process.env.SITE_ORIGIN || 'http://relocateforwork.com',
+  return await sitemap.response({
+    origin: 'https://relocateforwork.com',
     excludePatterns: [
-      '^/blog/new', // e.g., routes starting with `/blog/new`
+      '^/blog/new', // i.e. routes starting with `/dashboard`
     ],
     paramValues: {
       '/jobs/[slug]': jobSlugs, // Job slugs
       '/blog/[slug]': blogSlugs, // Blog slugs
     },
     headers: {
-      'custom-header': 'foo', // case insensitive; XML content type & 1h CDN cache by default
+      'custom-header': 'foo', // case insensitive; xml content type & 1h CDN cache by default
     },
     additionalPaths: [
-      '/foo.pdf', // e.g., to a file in your static dir
+      '/foo.pdf', // e.g. to a file in your static dir
     ],
     changefreq: 'daily', // excluded by default b/c ignored by modern search engines
     priority: 0.7, // excluded by default b/c ignored by modern search engines
