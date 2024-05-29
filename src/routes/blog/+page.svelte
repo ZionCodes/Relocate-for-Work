@@ -47,7 +47,7 @@
                               class="w-full h-48 object-cover"
                             >
                           <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            <a href="/">{record.title}</a>
+                            {record.title}
                           </h2>
                           <p class="mb-5 font-light text-gray-500 dark:text-gray-400 flex-grow overflow-hidden text-ellipsis line-clamp-3">
                             {record.introduction}
