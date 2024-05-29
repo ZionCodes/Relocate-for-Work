@@ -9,6 +9,8 @@
     }
 
     let htmlContent;
+    let showAlert = false;  // State variable for alert visibility
+    let alertMessage = '';  // State variable for alert message
 
     function onTextChange(event) {
         htmlContent = event.detail.html;
@@ -20,10 +22,29 @@
         const form = new FormData(event.target);
         form.set('article', htmlContent);
 
-        await fetch(event.target.action, {
+        const response = await fetch(event.target.action, {
             method: 'POST',
             body: form
         });
+
+        if (response.ok) {  // Successful submission
+            alertMessage = 'Form submitted successfully!';  // Set success message
+            showAlert = true;
+            setTimeout(() => {
+                showAlert = false;
+                location.reload();  // Refresh the page
+            }, 3000);
+
+            // Reset form inputs
+            event.target.reset();
+            htmlContent = '';
+        } else {  // Failed submission
+            alertMessage = 'Form submission failed. Please try again.';  // Set failure message
+            showAlert = true;
+            setTimeout(() => {
+                showAlert = false;
+            }, 3000);
+        }
     }
 </script>
   
@@ -33,10 +54,9 @@
 </svelte:head>
 
 <SvelteSeo
-    title='Post Jobs | Find Top Talent - Relocate for Work'
+    title='Post Blog - Relocate for Work'
     description='Fill Visa Sponsorship & Relocation Support Roles Faster. Reach Top Talent Seeking Relocation Assistance on Relocate for Work'
 />
-
 
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -44,7 +64,11 @@
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Post Job</h2>
             <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Best fit, not location: Hire the best, wherever they are!</p>
         </div> 
-        <!-- <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new product</h2> -->
+        {#if showAlert}
+        <div class="fixed top-0 left-0 right-0 p-4 text-center text-sm text-green-800 bg-green-300 dark:bg-gray-800 dark:text-green-400 z-50" role="alert">
+            <span class="font-medium">{alertMessage}</span>
+        </div>
+        {/if}
         <form method="post" action="?/create" on:submit={handleSubmit}>
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
@@ -73,10 +97,3 @@
         </form>
     </div>
 </section>
-
-
-  
-
-    
-        
-
