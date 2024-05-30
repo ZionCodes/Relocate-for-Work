@@ -44,9 +44,6 @@ export const GET = async () => {
     headers: {
       'custom-header': 'foo', // case insensitive; xml content type & 1h CDN cache by default
     },
-    additionalPaths: [
-      '/foo.pdf', // e.g. to a file in your static dir
-    ],
     changefreq: 'daily', // excluded by default b/c ignored by modern search engines
     priority: 0.7, // excluded by default b/c ignored by modern search engines
     sort: 'alpha', // default is false; 'alpha' sorts all paths alphabetically.

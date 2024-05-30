@@ -13,9 +13,20 @@
     }
 
     let htmlContent;
+    let amount = 9900; // Starting amount ($99.00)
+    let buttonText = `Post - $${(amount / 100).toFixed(2)}`; // Initialize button text
 
     function onTextChange(event) {
         htmlContent = event.detail.html;
+    }
+
+    function updateAmount(event) {
+    if (event.target.checked) {
+        amount += 9900; // Add $99.00
+    } else {
+        amount -= 9900; // Subtract $99.00
+    }
+    buttonText = `Post - $${(amount / 100).toFixed(2)}`; // Update button text
     }
 
     async function handleSubmit(event) {
@@ -71,8 +82,26 @@
 </svelte:head>
 
 <SvelteSeo
-    title='Post Jobs | Find Top Talent - Relocate for Work'
-    description='Fill Visa Sponsorship & Relocation Support Roles Faster. Reach Top Talent Seeking Relocation Assistance on Relocate for Work'
+  title='Post Jobs | Find Top Talent - Relocate for Work'
+  description='Fill Visa Sponsorship & Relocation Support Roles Faster. Hire the best, wherever they are!'
+  keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocate for work, relocate, move abroad"
+  openGraph={{
+  title: "Post Job | Find Top Talent anywhere in the World",
+  description:
+    "Fill Visa Sponsorship & Relocation Support Roles Faster. Hire the best, wherever they are!",
+  image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
+  url: "https://www.relocateforwork.com/jobs/new",
+  type: "website",
+  site_name: "Post Job - Relocate for Work",
+  }}
+  twitter={{
+  card: "summary_large_image",
+  site: "@RelocateforWork",
+  title: "Relocate For Work | Blog",
+  description:
+    "Fill Visa Sponsorship & Relocation Support Roles Faster. Hire the best, wherever they are!",
+  image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
+  }}
 />
 
 
@@ -139,10 +168,33 @@
                     <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company's Website URL</label>
                     <input type="url" name="url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
                 </div> 
-                
+                <fieldset class='sm:col-span-2'>
+                    <legend class="sr-only">Checkbox variants</legend>
+                    <div class="flex items-center mb-4">
+                        <input checked id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" disabled>
+                        <label for="checkbox-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Post Job Opening on Relocate for Work ($99)</label>
+                    </div>
+                  
+                    <div class="flex items-center mb-4">
+                        <input id="checkbox-2" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
+                        <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Highlight Job Opening for 1 month (+$99)</label>
+                    </div>
+                  
+                    <div class="flex items-center mb-4">
+                        <input id="checkbox-3" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
+                        <label for="checkbox-3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sticky Job Opening to the top of front page for 1 month (+$99)</label>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <input id="checkbox-4" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
+                        <label for="checkbox-4" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Feature Job Opening in Newsletter (+$99)</label>
+                    </div>
+                </fieldset>
+
+
+  
             </div>
             <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                Post - $99
+                {buttonText}
             </button>
         </form>
     </div>
