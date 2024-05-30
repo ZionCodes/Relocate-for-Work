@@ -92,12 +92,12 @@
   image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
   url: "https://www.relocateforwork.com/jobs/new",
   type: "website",
-  site_name: "Post Job - Relocate for Work",
+  site_name: "Relocate for Work",
   }}
   twitter={{
   card: "summary_large_image",
   site: "@RelocateforWork",
-  title: "Relocate For Work | Blog",
+  title: "Post Job | Find Top Talent anywhere in the World",
   description:
     "Fill Visa Sponsorship & Relocation Support Roles Faster. Hire the best, wherever they are!",
   image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",

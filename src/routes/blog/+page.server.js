@@ -1,5 +1,6 @@
 import PocketBase from 'pocketbase';
 import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
+import { createEmail } from '$lib/server/emailHandler';
 
 
 export async function load(){
@@ -31,3 +32,14 @@ export async function load(){
         records: results
     }
 }
+
+export const actions = {
+    createmail: async ({ request }) => {
+      try {
+        const result = await createEmail(request);
+        return { success: true, data: result };
+      } catch (error) {
+        return { success: false, error: error.message };
+      }
+    }
+  };

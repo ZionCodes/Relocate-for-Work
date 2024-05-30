@@ -7,10 +7,10 @@
 </script>
 
 <SvelteSeo
-  title="Find Visa Sponsorship and Relocation Assistance Jobs"
-  description="Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation assistance jobs."
+  title="Relocate for Work: Find Visa Sponsorship and Relocation Support Jobs"
+  description="Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation support jobs."
   canonical="https://relocateforwork.com"
-  keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocate for work, relocate"
+  keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocation assistance, relocate for work, relocate"
   openGraph={{
     title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
     description:

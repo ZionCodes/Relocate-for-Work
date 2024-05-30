@@ -1,5 +1,6 @@
 import PocketBase from 'pocketbase';
 import {SECRET_EMAIL,SECRET_PASSWORD} from '$env/static/private';
+import { createEmail } from '$lib/server/emailHandler';
 
 export async function load(){
     const pb = new PocketBase("https://connected-animal.pockethost.io/");
@@ -38,30 +39,16 @@ export async function load(){
 
 
 
-export const actions={
-    createmail: async ({request})=>{
-        const pb = new PocketBase("https://connected-animal.pockethost.io/");
-        //sign in
-         await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
-         
-        const form = await request.formData();
-        const email = form.get('email');
-  
-  
-        const data = {
-            email,
-           
-        };
-  
-        
-        
-        await pb.collection('emails').create(data);
-  
-        return { message: 'Email submitted successfully!' };
-  
-  
+export const actions = {
+    createmail: async ({ request }) => {
+      try {
+        const result = await createEmail(request);
+        return { success: true, data: result };
+      } catch (error) {
+        return { success: false, error: error.message };
+      }
     }
-  }
+  };
 
 
   
