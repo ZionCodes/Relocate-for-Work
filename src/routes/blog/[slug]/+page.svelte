@@ -11,7 +11,7 @@ export let data;
   openGraph={{
   title: `${data.records.title}`,
   description: `${data.records.introduction}`,
-  image: `https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.thumbnail}`,
+  image: `https://connected-animal.pockethost.io/api/files/posts/${data.records.id}/${data.records.thumbnail}`,
   type: "article",
   site_name: "Relocate for Work Blog",
   }}
@@ -20,7 +20,7 @@ export let data;
   site: "@RelocateforWork",
   title: `${data.records.title}`,
   description: `${data.records.introduction}`,
-  image: `https://connected-animal.pockethost.io/api/files/jobs/${data.records.id}/${data.records.thumbnail}`,
+  image: `https://connected-animal.pockethost.io/api/files/posts/${data.records.id}/${data.records.thumbnail}`,
   }}
 />
 

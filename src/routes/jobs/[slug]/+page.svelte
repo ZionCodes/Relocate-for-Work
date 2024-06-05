@@ -93,9 +93,15 @@
 </div>
 
 
-<div class="parent-container p-2 max-w-4xl items-center mx-auto">
+<div class="parent-container p-2 max-w-4xl items-center mx-auto prose">
   <p class="mb-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed">{@html data.records.description}</p>
 </div>
+
+
+
+
+
+
 
 
 <Email />
