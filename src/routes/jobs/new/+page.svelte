@@ -2,9 +2,6 @@
     import {Editor} from '@tadashi/svelte-editor-quill';
     import { onMount } from 'svelte';
     import SvelteSeo from "svelte-seo";
-    import { loadStripe } from '@stripe/stripe-js';
-
-    const stripePromise = loadStripe('pk_test_51LmM0IAbRbfbQ2Hfp2vGdkN1APZZqJ8h4AVpSxgJXvaT6P48UWI2gRN5Av9545Tjn0Vi1THX9t2zHBHt5dkrEnVq00fgquL53d'); // Replace with your public key
 
     const options = {
         theme: 'snow',
@@ -30,41 +27,35 @@
     }
 
     async function handleSubmit(event) {
-        event.preventDefault();
-        const form = event.target;
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    formData.append('description', htmlContent);
 
-        const stripe = await stripePromise;
-        const response = await fetch('/new/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: form.email.value,
-                amount: 9900, // Amount in cents ($99.00)
-                description: htmlContent,
-            }),
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
         });
 
-        const session = await response.json();
-
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
-
-        if (result.error) {
-            console.error(result.error.message);
+        if (response.ok) {
+            showAlert();
+        } else {
+            console.error('Form submission failed.');
         }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
     }
 
     // Function to show the alert and redirect
     function showAlert() {
-        const alertBox = document.getElementById('info-popup');
-        alertBox.classList.remove('hidden');
-        setTimeout(() => {
-            alertBox.classList.add('hidden');
-            window.location.href = '/';
-        }, 2000);
+    const alertBox = document.getElementById('info-popup');
+    alertBox.classList.remove('hidden');
+    setTimeout(() => {
+        alertBox.classList.add('hidden');
+        window.location.href = '/';
+    }, 2000);
     }
 
     // Listen for successful payment events
@@ -200,7 +191,9 @@
     </div>
 </section>
 
-
+<div id="info-popup" class="hidden fixed top-0 left-0 right-0 p-4 bg-green-500 text-white text-center z-50">
+    Your job has been posted successfully!
+</div>
   
 
     
