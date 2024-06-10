@@ -40,7 +40,7 @@
             <ul class="grid gap-8 lg:grid-cols-3">
                 {#each data?.records as record}
                   <li class="flex">
-                    <a href={`/blog/${encodeURIComponent(record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${record.id}`} class="block relative overflow-hidden w-full">
+                    <a href={`/blog/${encodeURIComponent(record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '').replace(/:/g, ''))}-${record.id}`} class="block relative overflow-hidden w-full">
                         <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full min-h-[400px]">
                             <img
                               src={`https://connected-animal.pockethost.io/api/files/posts/${record.id}/${record.thumbnail}`}

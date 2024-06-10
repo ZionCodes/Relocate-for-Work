@@ -70,6 +70,7 @@
 <svelte:head>
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 </svelte:head>
 
 <SvelteSeo

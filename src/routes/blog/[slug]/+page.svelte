@@ -59,8 +59,11 @@ export let data;
                 </address>
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{data.records.title}</h1>
             </header>
-            <p class="lead text-xl mt-5 mb-5">{data.records.introduction}</p>
-            <p class='mb-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed'>{@html data.records.article}</p>
+            <p class="lead text-xl mt-5">{data.records.introduction}</p>
+            <div class="parent-container p-2 max-w-4xl items-center mx-auto prose">
+              <p class='mb-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed'>{@html data.records.article}</p>
+            </div>
+            
         </article>
     </div>
   </main>
