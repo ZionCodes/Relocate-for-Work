@@ -5,7 +5,6 @@
     const options = {
         theme: 'snow',
         placeholder: 'Job Description',
-        plainclipboard: true,
     }
 
     let htmlContent;
