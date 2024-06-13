@@ -31,21 +31,43 @@
     const formData = new FormData(form);
     formData.append('description', htmlContent);
 
-    try {
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: formData,
-        });
-
-        if (response.ok) {
-            showAlert();
-        } else {
-            console.error('Form submission failed.');
+    // Initialize Paystack payment
+    let handler = PaystackPop.setup({
+        key: 'pk_test_240221531981009c77a79daabf9068010665387f', // Replace with your public key
+        email: formData.get('email'),
+        amount: amount, // Amount in kobo (e.g., 9900 for $99.00)
+        currency: 'USD',
+        ref: 'Relocate_for_Work' + Math.floor((Math.random() * 1000) + 1), // Unique reference for the transaction
+        channels: ['card'], // Restrict to card payments
+        onClose: function(){
+            alert('Payment window closed.');
+        },
+        callback: function(response){
+            // Form submission after successful payment
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Form submitted successfully');
+                    // Show alert and redirect to homepage after successful submission
+                    showAlert();
+                } else {
+                    console.error('Form submission failed');
+                }
+            }).catch(error => {
+                console.error('Error submitting form:', error);
+            });
         }
-    } catch (error) {
-        console.error('Error submitting form:', error);
+    });
+
+    // Open the Paystack payment popup
+    handler.openIframe();
     }
-    }
+
+
+
+    
 
     // Function to show the alert and redirect
     function showAlert() {
@@ -69,7 +91,8 @@
 <svelte:head>
     <link rel="preconnect" href="https://cdn.quilljs.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
-    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
 </svelte:head>
 
 <SvelteSeo
