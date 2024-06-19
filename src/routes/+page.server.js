@@ -9,7 +9,14 @@ export async function load(){
         sort: '-created',
     });
 
-    const results = records.map((record) => {
+      // Sort records: first by tier_2 (true first), then by creation date (descending)
+      const sortedRecords = records.sort((a, b) => {
+        if (a.tier_2 && !b.tier_2) return -1;
+        if (!a.tier_2 && b.tier_2) return 1;
+        return new Date(b.created) - new Date(a.created);
+    });
+
+    const results = sortedRecords.map((record) => {
         const createdDate = new Date(record.created);
         const formattedDate = createdDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
         return {
@@ -22,6 +29,9 @@ export async function load(){
             country: record.country,
             id: record.id,
             filename: record.fileName,
+            tier_1: record.tier_1,
+            tier_2: record.tier_2,
+            tier_3: record.tier_3,
             url: record.url,
             created: formattedDate // Use formatted date here
         };
