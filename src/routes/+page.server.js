@@ -9,12 +9,19 @@ export async function load(){
         sort: '-created',
     });
 
-      // Sort records: first by tier_2 (true first), then by creation date (descending)
-      const sortedRecords = records.sort((a, b) => {
-        if (a.tier_2 && !b.tier_2) return -1;
-        if (!a.tier_2 && b.tier_2) return 1;
-        return new Date(b.created) - new Date(a.created);
-    });
+      // Sort records
+    const sortedRecords = records.sort((a, b) => {
+      // Jobs with both tier_1 and tier_2
+      if (a.tier_1 && a.tier_2 && (!b.tier_1 || !b.tier_2)) return -1;
+      if ((!a.tier_1 || !a.tier_2) && b.tier_1 && b.tier_2) return 1;
+
+      // Jobs with only tier_2
+      if (a.tier_2 && !b.tier_2) return -1;
+      if (!a.tier_2 && b.tier_2) return 1;
+
+      // Default sort by creation date
+      return new Date(b.created) - new Date(a.created);
+      });
 
     const results = sortedRecords.map((record) => {
         const createdDate = new Date(record.created);
