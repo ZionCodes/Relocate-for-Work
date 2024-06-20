@@ -50,7 +50,7 @@
           <div class="min-w-0 flex-auto">
             <span class="text-primary-600 dark:text-primary-500 text-sm ">{record.companyname}</span>
             <p class="md:text-sm leading-6 text-gray-900 font-bold mt-px max-w-xs">{record.title}</p>
-            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{record.city}, {record.country}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-700">{record.city}, {record.country}</p>
             <div class="inline-flex items-center rounded-full whitespace-nowrap border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-primary-800 dark:text-primary-800 bg-blue-50">
               {record.tag}
             </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="flex flex-col items-end text-sm leading-6 text-gray-900 sm:flex-col-reverse">
           <!-- <span class="mt-1 text-purple-500 text-sm flex">Promoted</span> -->
-          <span class="text-gray-500 text-sm flex">{record.created}</span>
+          <span class="text-gray-700 text-sm flex">{record.created}</span>
         </div>
       </a>
     </li>
