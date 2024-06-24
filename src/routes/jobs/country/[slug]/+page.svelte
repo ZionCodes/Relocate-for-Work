@@ -1,20 +1,24 @@
 <script>
   import SvelteSeo from "svelte-seo";
-  import Email from '../lib/Email.svelte';
-  import Hero from '../lib/Hero.svelte'
+  import Email from '$lib/Email.svelte';
+  import Hero from '$lib/Hero.svelte';
+
   export let data;
 
+  // Destructure country from data
+  const { country } = data;
+
+  console.log(country);  // Should log the country name, e.g., "Germany"
 </script>
 
 <SvelteSeo
-  title="Find Visa Sponsorship and Relocation Support Jobs | Relocate for Work"
-  description="Land your dream job and move abroad! Relocate for Work connects you with visa sponsorship and relocation support jobs."
+  title={`Find Visa Sponsorship and Relocation Support Jobs in ${country}`}
+  description={`Land your dream job and move abroad to ${country}! Relocate for Work connects you with visa sponsorship and relocation support jobs in ${country}.`}
   canonical="https://relocateforwork.com"
-  keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocation assistance, relocate for work, relocate"
+  keywords={`visa sponsorship jobs ${country}, relocation support jobs ${country}, relocation support ${country}, visa sponsorship ${country}, work abroad ${country}, relocation assistance ${country}, relocate for work ${country}, relocate ${country}`}
   openGraph={{
-    title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
-    description:
-      "Land your dream job and move abroad!",
+    title: `Find Visa Sponsorship and Relocation Assistance Jobs in ${country} | RelocateForWork.com`,
+    description: `Land your dream job in ${country} and move abroad!`,
     image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
     url: "https://relocateforwork.com",
     type: "website",
@@ -23,17 +27,17 @@
   twitter={{
     card: "summary_large_image",
     site: "@RelocateforWork",
-    title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
-    description:
-      "Land your dream job and move abroad!",
+    title: `Find Visa Sponsorship and Relocation Assistance Jobs in ${country} | RelocateForWork.com`,
+    description: `Land your dream job in ${country} and move abroad!`,
     image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
   }}
 />
 
-<Hero />
+<Hero {country} />
 <Email />
+
 <ul class='mb-12'>
-  {#each data?.records as record}
+  {#each data.records as record}
     <li class="relative">
       <a href={`/jobs/${encodeURIComponent(record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.companyname.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.city.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${record.id}`} class={`relative flex px-3 justify-between max-w-screen-md gap-x-6 py-5 border border-gray-200 mb-3 rounded-lg flex-wrap items-center mx-auto transition-colors duration-200
           ${record.tier_1 ? 'bg-yellow-100 hover:bg-yellow-100' : 'hover:bg-gray-100'}`}>
@@ -57,7 +61,6 @@
           </div>
         </div>
         <div class="flex flex-col items-end text-sm leading-6 text-gray-900 sm:flex-col-reverse">
-          <!-- <span class="mt-1 text-purple-500 text-sm flex">Promoted</span> -->
           <span class="text-gray-700 text-sm flex">{record.created}</span>
         </div>
       </a>
