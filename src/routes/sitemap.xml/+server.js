@@ -1,4 +1,3 @@
-// /src/routes/sitemap.xml/+server.js
 import PocketBase from 'pocketbase';
 import * as sitemap from 'super-sitemap';
 import { SECRET_EMAIL, SECRET_PASSWORD } from '$env/static/private';
@@ -10,7 +9,7 @@ export const prerender = true; // optional
 export const GET = async () => {
   await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
 
-  let jobSlugs, blogSlugs;
+  let jobSlugs, blogSlugs, countrySlugs;
   try {
     // Fetch data for jobs
     const jobs = await pb.collection('jobs').getFullList();
@@ -27,6 +26,10 @@ export const GET = async () => {
       const titleSlug = record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
       return `${encodeURIComponent(titleSlug)}-${record.id}`;
     });
+
+    // Fetch data for countries
+    const countries = await pb.collection('countries').getFullList();
+    countrySlugs = countries.map(record => record.country.toLowerCase().replace(/\s+/g, '-'));
   } catch (err) {
     console.error('Error fetching data for param values:', err);
     throw new Error('Could not load data for param values.');
@@ -35,11 +38,12 @@ export const GET = async () => {
   return await sitemap.response({
     origin: 'https://relocateforwork.com',
     excludePatterns: [
-      '^/blog/new', // i.e. routes starting with `/dashboard`
+      '^/blog/new', // i.e. routes starting with `/blog/new`
     ],
     paramValues: {
       '/jobs/[slug]': jobSlugs, // Job slugs
       '/blog/[slug]': blogSlugs, // Blog slugs
+      '/jobs/country/[slug]': countrySlugs, // Country slugs
     },
     headers: {
       'custom-header': 'foo', // case insensitive; xml content type & 1h CDN cache by default
