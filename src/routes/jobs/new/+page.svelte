@@ -33,7 +33,7 @@
 
     // Initialize Paystack payment
     let handler = PaystackPop.setup({
-        key: 'pk_test_240221531981009c77a79daabf9068010665387f', // Replace with your public key
+        key: 'pk_live_6f9370c9992106efc72792c6a58496a8ff236e37', // Replace with your public key
         email: formData.get('email'),
         amount: amount, // Amount in kobo (e.g., 9900 for $99.00)
         currency: 'USD',
