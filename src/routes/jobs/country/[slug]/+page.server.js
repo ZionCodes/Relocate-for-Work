@@ -60,6 +60,7 @@ export async function load({ params }) {
 
     return {
         country: countryName,
-        records: formattedJobRecords
+        records: formattedJobRecords,
+        countries: countries.map(c => c.country)
     };
 }

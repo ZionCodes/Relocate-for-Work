@@ -9,7 +9,7 @@
     }
 
     let htmlContent;
-    let amount = 9900; // Starting amount ($99.00)
+    let amount = 4900; // Starting amount ($99.00)
     let buttonText = `Post - $${(amount / 100).toFixed(2)}`; // Initialize button text
 
     function onTextChange(event) {
@@ -18,9 +18,9 @@
 
     function updateAmount(event) {
     if (event.target.checked) {
-        amount += 9900; // Add $99.00
+        amount += 4900; // Add $99.00
     } else {
-        amount -= 9900; // Subtract $99.00
+        amount -= 4900; // Subtract $99.00
     }
     buttonText = `Post - $${(amount / 100).toFixed(2)}`; // Update button text
     }
@@ -191,16 +191,16 @@
                   
                     <div class="flex items-center mb-4">
                         <input name="checkbox-2" id="checkbox-2" type="checkbox" value="99" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
-                        <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Highlight Job Opening for 1 month (+$99)</label>
+                        <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Highlight Job Opening for 1 month (+$49)</label>
                     </div>
                   
                     <div class="flex items-center mb-4">
                         <input name="checkbox-3" id="checkbox-3" type="checkbox" value="99" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
-                        <label for="checkbox-3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sticky Job Opening to the top of front page for 1 month (+$99)</label>
+                        <label for="checkbox-3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sticky Job Opening to the top of front page for 1 month (+$49)</label>
                     </div>
                     <div class="flex items-center mb-4">
                         <input name="checkbox-4" id="checkbox-4" type="checkbox" value="99" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" on:change={updateAmount}>
-                        <label for="checkbox-4" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Feature Job Opening in Newsletter (+$99)</label>
+                        <label for="checkbox-4" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Feature Job Opening in Newsletter (+$49)</label>
                     </div>
                 </fieldset>
 

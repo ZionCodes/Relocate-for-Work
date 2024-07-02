@@ -1,5 +1,5 @@
 <script>
-import Email from "../../../lib/Email.svelte";
+import Email from "$lib/Email.svelte";
 import SvelteSeo from "svelte-seo";
 export let data;
 </script>

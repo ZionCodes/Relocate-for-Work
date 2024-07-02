@@ -1,9 +1,23 @@
 <script>
   import SvelteSeo from "svelte-seo";
   import Email from '../lib/Email.svelte';
-  import Hero from '../lib/Hero.svelte'
+  import Hero from '../lib/Hero.svelte';
+  import Search from '../lib/Search.svelte';
+  
   export let data;
 
+  let selectedCountry = '';
+  let searchQuery = '';
+
+  // Define the countries variable and assign it from data
+  let countries = data.countries || [];
+
+  // Filtered records based on search query
+  $: filteredRecords = data.records.filter(record =>
+    record.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    record.companyname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    record.city.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 </script>
 
 <SvelteSeo
@@ -13,8 +27,7 @@
   keywords="visa sponsorship jobs, relocation support jobs, relocation support, visa sponsorship, work abroad, relocation assistance, relocate for work, relocate"
   openGraph={{
     title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
-    description:
-      "Land your dream job and move abroad!",
+    description: "Land your dream job and move abroad!",
     image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
     url: "https://relocateforwork.com",
     type: "website",
@@ -24,16 +37,19 @@
     card: "summary_large_image",
     site: "@RelocateforWork",
     title: "Find Visa Sponsorship and Relocation Assistance Jobs | RelocateForWork.com",
-    description:
-      "Land your dream job and move abroad!",
+    description: "Land your dream job and move abroad!",
     image: "https://res.cloudinary.com/dbvvslwpj/image/upload/f_auto,q_auto/c1ng5xtxmksgjwenulzv",
   }}
 />
 
 <Hero />
 <Email />
+
+<!-- Pass the countries data to the Search component -->
+<Search {countries} bind:selectedCountry={selectedCountry} bind:searchQuery={searchQuery} />
+
 <ul class='mb-12' id="jobs">
-  {#each data?.records as record}
+  {#each filteredRecords as record}
     <li class="relative">
       <a href={`/jobs/${encodeURIComponent(record.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.companyname.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${encodeURIComponent(record.city.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, ''))}-${record.id}`} class={`relative flex px-3 justify-between max-w-screen-md gap-x-6 py-5 border border-gray-200 mb-3 rounded-lg flex-wrap items-center mx-auto transition-colors duration-200
           ${record.tier_1 ? 'bg-yellow-100 hover:bg-yellow-100' : 'hover:bg-gray-100'}`}>
@@ -57,7 +73,6 @@
           </div>
         </div>
         <div class="flex flex-col items-end text-sm leading-6 text-gray-900 sm:flex-col-reverse">
-          <!-- <span class="mt-1 text-purple-500 text-sm flex">Promoted</span> -->
           <span class="text-gray-700 text-sm flex">{record.created}</span>
         </div>
       </a>
