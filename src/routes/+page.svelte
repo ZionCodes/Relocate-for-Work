@@ -43,7 +43,6 @@
 />
 
 <Hero />
-<Email />
 
 <!-- Pass the countries data to the Search component -->
 <Search {countries} bind:selectedCountry={selectedCountry} bind:searchQuery={searchQuery} />
