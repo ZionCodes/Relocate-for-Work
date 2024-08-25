@@ -53,7 +53,8 @@ export const actions = {
     
     try {
       const records = await pb.collection('articles').getFullList({
-        fields: 'title,article'
+        fields: 'title,article,introduction',
+        filter: 'generated = false'
       });
       console.log('Raw articles from PocketBase:', records);
       
@@ -64,7 +65,8 @@ export const actions = {
       
       const articles = records.map(record => ({
         title: record.title,
-        article: record.article
+        article: record.article,
+        introduction: record.introduction
       }));
       
       console.log('Processed articles:', articles);
@@ -132,15 +134,17 @@ export const actions = {
   
         const title = articleTemplate.title.replace(/{Country}/g, country.country);
         const article = articleTemplate.article.replace(/{Country}/g, country.country);
+        const introduction = articleTemplate.introduction.replace(/{Country}/g, country.country);
 
         const flagUrl = `https://connected-animal.pockethost.io/api/files/countries/${country.id}/${country.flag}`
   
         generatedArticles.push({
           country: country.country,
+          introduction: introduction,
           id:country.id,
           flag: flagUrl,
           title: title,
-          article: article,
+          article: article
         });
       }
     }
@@ -176,3 +180,66 @@ export const actions = {
   }
 
   generateAllArticles();
+
+
+  async function saveArticlesToPocketBase(generatedArticles) {
+    const pb = new PocketBase('https://connected-animal.pockethost.io/');
+    await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
+  
+    try {
+      for (const article of generatedArticles) {
+        // Fetch the image
+        const imageResponse = await fetch(article.flag);
+        const imageBlob = await imageResponse.blob();
+  
+        // Create a File object from the Blob
+        const fileName = article.flag.split('/').pop(); // Get the original file name
+        const imageFile = new File([imageBlob], fileName, { type: imageBlob.type });
+  
+        // Create FormData and append all fields
+        const formData = new FormData();
+        formData.append('introduction', article.introduction);
+        formData.append('title', article.title);
+        formData.append('article', article.article);
+        formData.append('field', 'sm9grsjsukycgmz');
+        formData.append('thumbnail', imageFile);
+  
+        // Save the article to the 'posts' collection
+        await pb.collection('posts').create(formData);
+  
+        console.log(`Saved article: ${article.title}`);
+      }
+  
+      // After all articles are saved, update the 'generated' field in the 'articles' collection
+      const articleTemplate = generatedArticles[0].title.replace(generatedArticles[0].country, '{Country}');
+      const articlesRecords = await pb.collection('articles').getFullList({
+        filter: `title = "${articleTemplate}"`
+      });
+  
+      if (articlesRecords.length > 0) {
+        await pb.collection('articles').update(articlesRecords[0].id, {
+          generated: true
+        });
+        console.log('Updated generated field to true for the template article');
+      } else {
+        console.log('Template article not found in the articles collection');
+      }
+  
+      console.log('All articles have been processed and saved');
+    } catch (error) {
+      console.error('Error processing articles:', error);
+    }
+  }
+
+  async function generateAndSaveArticles() {
+    try {
+      const articles = await fetchArticles();
+      const countries = await fetchCountries();
+      const generatedArticles = generateArticles(articles, countries);
+      await saveArticlesToPocketBase(generatedArticles);
+    } catch (error) {
+      console.error('Error generating and saving articles:', error);
+    }
+  }
+  
+  generateAndSaveArticles();
