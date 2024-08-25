@@ -9,7 +9,7 @@ export const prerender = true; // optional
 export const GET = async () => {
   await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
 
-  let jobSlugs, blogSlugs, countrySlugs;
+  let jobSlugs, blogSlugs, countrySlugs, citySlugs;
   try {
     // Fetch data for jobs
     const jobs = await pb.collection('jobs').getFullList();
@@ -30,6 +30,7 @@ export const GET = async () => {
     // Fetch data for countries
     const countries = await pb.collection('countries').getFullList();
     countrySlugs = countries.map(record => record.country.toLowerCase().replace(/\s+/g, '-'));
+    citySlugs = [...new Set(jobs.map(record => record.city.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')))];
   } catch (err) {
     console.error('Error fetching data for param values:', err);
     throw new Error('Could not load data for param values.');
@@ -44,6 +45,7 @@ export const GET = async () => {
       '/jobs/[slug]': jobSlugs, // Job slugs
       '/blog/[slug]': blogSlugs, // Blog slugs
       '/jobs/country/[slug]': countrySlugs, // Country slugs
+      '/jobs/city/[slug]': citySlugs,
     },
     headers: {
       'custom-header': 'foo', // case insensitive; xml content type & 1h CDN cache by default
