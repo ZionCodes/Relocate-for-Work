@@ -87,7 +87,7 @@ export const actions = {
     
     try {
       const records = await pb.collection('countries').getFullList({
-        fields: 'country,flag'
+        fields: 'country,flag,id',
       });
       console.log('Raw records from PocketBase:', records);
       
@@ -99,6 +99,7 @@ export const actions = {
       const countries = records.map(record => ({
         country: record.country,
         flag: record.flag,
+        id: record.id
       }));
       
       console.log('Processed countries:', countries);
@@ -131,10 +132,13 @@ export const actions = {
   
         const title = articleTemplate.title.replace(/{Country}/g, country.country);
         const article = articleTemplate.article.replace(/{Country}/g, country.country);
+
+        const flagUrl = `https://connected-animal.pockethost.io/api/files/countries/${country.id}/${country.flag}`
   
         generatedArticles.push({
           country: country.country,
-          flag: country.flag,
+          id:country.id,
+          flag: flagUrl,
           title: title,
           article: article,
         });
