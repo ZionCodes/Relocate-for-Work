@@ -185,49 +185,59 @@ export const actions = {
     await pb.admins.authWithPassword(SECRET_EMAIL, SECRET_PASSWORD);
   
     try {
-      for (const article of generatedArticles) {
-        // Fetch the image
-        const imageResponse = await fetch(article.flag);
-        const imageBlob = await imageResponse.blob();
+        for (const article of generatedArticles) {
+            // Check if an article with the same title already exists
+            const existingArticles = await pb.collection('posts').getList(1, 1, {
+                filter: `title = "${article.title}"`
+            });
+
+            if (existingArticles.items.length > 0) {
+                console.log(`Article already exists: ${article.title}. Skipping.`);
+                continue;
+            }
+
+            // Fetch the image
+            const imageResponse = await fetch(article.flag);
+            const imageBlob = await imageResponse.blob();
   
-        // Create a File object from the Blob
-        const fileName = article.flag.split('/').pop(); // Get the original file name
-        const imageFile = new File([imageBlob], fileName, { type: imageBlob.type });
+            // Create a File object from the Blob
+            const fileName = article.flag.split('/').pop(); // Get the original file name
+            const imageFile = new File([imageBlob], fileName, { type: imageBlob.type });
   
-        // Create FormData and append all fields
-        const formData = new FormData();
-        formData.append('introduction', article.introduction);
-        formData.append('title', article.title);
-        formData.append('article', article.article);
-        formData.append('field', 'sm9grsjsukycgmz');
-        formData.append('thumbnail', imageFile);
+            // Create FormData and append all fields
+            const formData = new FormData();
+            formData.append('introduction', article.introduction);
+            formData.append('title', article.title);
+            formData.append('article', article.article);
+            formData.append('field', 'sm9grsjsukycgmz');
+            formData.append('thumbnail', imageFile);
   
-        // Save the article to the 'posts' collection
-        await pb.collection('posts').create(formData);
+            // Save the article to the 'posts' collection
+            await pb.collection('posts').create(formData);
   
-        console.log(`Saved article: ${article.title}`);
-      }
+            console.log(`Saved article: ${article.title}`);
+        }
   
-      // After all articles are saved, update the 'generated' field in the 'articles' collection
-      const articleTemplate = generatedArticles[0].title.replace(generatedArticles[0].country, '{Country}');
-      const articlesRecords = await pb.collection('articles').getFullList({
-        filter: `title = "${articleTemplate}"`
-      });
-  
-      if (articlesRecords.length > 0) {
-        await pb.collection('articles').update(articlesRecords[0].id, {
-          generated: true
+        // After all articles are saved, update the 'generated' field in the 'articles' collection
+        const articleTemplate = generatedArticles[0].title.replace(generatedArticles[0].country, '{Country}');
+        const articlesRecords = await pb.collection('articles').getFullList({
+            filter: `title = "${articleTemplate}"`
         });
-        console.log('Updated generated field to true for the template article');
-      } else {
-        console.log('Template article not found in the articles collection');
-      }
   
-      console.log('All articles have been processed and saved');
+        if (articlesRecords.length > 0) {
+            await pb.collection('articles').update(articlesRecords[0].id, {
+                generated: true
+            });
+            console.log('Updated generated field to true for the template article');
+        } else {
+            console.log('Template article not found in the articles collection');
+        }
+  
+        console.log('All articles have been processed and saved');
     } catch (error) {
-      console.error('Error processing articles:', error);
+        console.error('Error processing articles:', error);
     }
-  }
+}
 
   async function generateAndSaveArticles() {
     try {
